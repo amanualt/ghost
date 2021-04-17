@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost
+  namespace: develop
+  labels:
+    app: ghost
+spec:
+  selector:
+    matchLabels: 
+      app: ghost
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+      - name: ghost
+        image: amanu/ghost
+        ports:
+        - containerPort: 2368
+        resources:
+          limits:
+            memory: "100Mi"
+          requests: 
+            memory: "75Mi"
+            cpu: "50m"
